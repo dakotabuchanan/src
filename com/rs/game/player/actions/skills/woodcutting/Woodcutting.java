@@ -2,6 +2,7 @@ package com.rs.game.player.actions.skills.woodcutting;
 
 import com.rs.cache.loaders.ItemDefinitions;
 import com.rs.game.Animation;
+import com.rs.game.Graphics;
 import com.rs.game.World;
 import com.rs.game.WorldObject;
 import com.rs.game.WorldTile;
@@ -37,17 +38,17 @@ public final class Woodcutting extends Action {
 
 		OAK(15, 37.5, 1521, 15, 8, 15, 15), // TODO
 
-		WILLOW(30, 67.5, 1519, 25, 12, 51, 15), // TODO
+		WILLOW(30, 67.5, 1519, 20, 8, 51, 15), // TODO
 
-		MAPLE(45, 100, 1517, 35, 16, 72, 10),
+		MAPLE(45, 100, 1517, 25, 12, 72, 10),
 
-		YEW(60, 175, 1515, 50, 17, 94, 10), // TODO
+		YEW(60, 175, 1515, 35, 14, 94, 10), // TODO
 
-		IVY(68, 332.5, -1, 55, 17, 58, 10),
+		IVY(68, 332.5, -1, 30, 16, 58, 90), //55 17
 
-		MAGIC(75, 250, 1513, 70, 21, 121, 10),
+		MAGIC(75, 250, 1513, 45, 20, 121, 10),
 
-		CURSED_MAGIC(82, 250, 1513, 70, 21, 121, 10),
+		CURSED_MAGIC(82, 250, 1513, 60, 21, 121, 10),
 
 		FRUIT_TREES(1, 25, -1, 20, 4, 1341, 8),
 
@@ -139,7 +140,7 @@ public final class Woodcutting extends Action {
 
 		DRAGON(6739, 61, 13, 2846),
 
-		INFERNO(13661, 61, 10, 10251);
+		INFERNO(13661, 61, 50, 10251);
 
 		private int itemId, levelRequried, axeTime, emoteId;
 
@@ -363,7 +364,7 @@ public final class Woodcutting extends Action {
 			case 13661: // Inferno adze
 				if (level >= 61) {
 					emoteId = 10251;
-					axeTime = 10;
+					axeTime = 50;
 					return true;
 				}
 				break;
@@ -424,7 +425,7 @@ public final class Woodcutting extends Action {
 		if (player.getInventory().containsOneItem(13661)) {
 			if (level >= 61) {
 				emoteId = 10251;
-				axeTime = 10;
+				axeTime = 50;
 				return true;
 			}
 		}
@@ -552,8 +553,16 @@ public final class Woodcutting extends Action {
 			player.getPackets().sendGameMessage("You get some " + logName + ".", true);
 		}
 		LumberjackOutfit.addPiece(player);
-		if (definitions != TreeDefinitions.VINES) {
+		if (definitions != TreeDefinitions.VINES && definitions != TreeDefinitions.IVY) {
+			if (player.getInventory().containsOneItem(13661) && Utils.getRandom(2) == 0
+					|| player.getEquipment().getWeaponId() == 13661 && Utils.getRandom(2) == 0) {
+				String logName = ItemDefinitions.getItemDefinitions(definitions.getLogsId()).getName().toLowerCase();
+				player.getPackets().sendGameMessage("The adze's heat instantly incinerates the " + logName + ".");
+				player.gfx(new Graphics(1776));
+				player.getSkills().addXp(Skills.FIREMAKING, totalXp);
+			} else {
 			player.getInventory().addItem(definitions.getLogsId(), 1);
+			}
 		}
 		if (doubleLoot(player, true)) {
 			if (definitions != TreeDefinitions.VINES && definitions != TreeDefinitions.IVY) {
