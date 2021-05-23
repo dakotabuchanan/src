@@ -2917,32 +2917,23 @@ public class ButtonHandler {
 	}
 
 	public static void submitSpecialRequest(final Player player) {
-		CoresManager.fastExecutor.schedule(new TimerTask() {
+		WorldTasksManager.schedule(new WorldTask() {
 			@Override
 			public void run() {
-				try {
-					WorldTasksManager.schedule(new WorldTask() {
-						@Override
-						public void run() {
-							final int weaponId = player.getEquipment().getWeaponId();
-							if (player.hasInstantSpecial(weaponId) && !player.itemSwitch) {
-								final Entity target = (Entity) player.temporaryAttribute().get("last_target");
-								if ((player.getActionManager().getAction() instanceof PlayerCombat) && target != null) {
-									player.getActionManager().forceStop();
-									player.performInstantSpecial(weaponId);
-									player.getActionManager().setAction(new PlayerCombat(target));
-								} else {
-									player.getActionManager().forceStop();
-									player.performInstantSpecial(weaponId);
-								}
-								return;
-							}
-							player.getCombatDefinitions().switchUsingSpecialAttack();
-						}
-					}, 0);
-				} catch (Throwable e) {
-					Logger.handle(e);
+				final int weaponId = player.getEquipment().getWeaponId();
+				if (player.hasInstantSpecial(weaponId) && !player.itemSwitch) {
+					final Entity target = (Entity) player.temporaryAttribute().get("last_target");
+					if ((player.getActionManager().getAction() instanceof PlayerCombat) && target != null) {
+						player.getActionManager().forceStop();
+						player.performInstantSpecial(weaponId);
+						player.getActionManager().setAction(new PlayerCombat(target));
+					} else {
+						player.getActionManager().forceStop();
+						player.performInstantSpecial(weaponId);
+					}
+					return;
 				}
+				player.getCombatDefinitions().switchUsingSpecialAttack();
 			}
 		}, 0);
 	}
