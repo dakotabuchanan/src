@@ -95,8 +95,10 @@ public final class Settings {
 																							// 4465,
 																							// 0);
 	public static final long MAX_PACKETS_DECODER_PING_DELAY = 30000;
-	public static int SKILLING_XP_RATE = 10;
-	public static final int COMBAT_XP_RATE = 100;
+	public static int SKILLING_XP_RATE = 20;
+	public static final int COMBAT_XP_RATE = 60;
+	public static final int MAGIC_XP_RATE = 30;
+	public static final int RANGE_XP_RATE = 50;
 	public static final int SUMMONING_XP_RATE = 10;
 	public static final int DROP_RATE = 1;
 	public static double BONUS_EXP_WEEK_MULTIPLIER = 1.0;
@@ -152,7 +154,7 @@ public final class Settings {
 			13887, 13890, 13893, 13896, 13899, 13902, 13905, 14484, 19784, 11694, 13738, 13740, 13742, 13744, 15017,
 			15018, 15019, 15020, 15220, 23659, 6570 };
 	
-	public static final String[] DEVELOPERS = { "jack", "zach", "detris" };
+	public static final String[] DEVELOPERS = { "Jack", "Zach", "Detris" };
 	
 	public static final String[] MODERATORS = {};
 	
