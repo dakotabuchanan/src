@@ -20,7 +20,7 @@ public final class Settings {
 	/**
 	 * 0 full eco, 1 eco spawn, 2 spawn
 	 * */
-	public static int ECONOMY_MODE = 1;
+	public static int ECONOMY_MODE = 0;
 	
 	/**
 	 * price and <- is free if eco mode 1
@@ -152,7 +152,7 @@ public final class Settings {
 			13887, 13890, 13893, 13896, 13899, 13902, 13905, 14484, 19784, 11694, 13738, 13740, 13742, 13744, 15017,
 			15018, 15019, 15020, 15220, 23659, 6570 };
 	
-	public static final String[] DEVELOPERS = { "andreas", "manager", "bank" };
+	public static final String[] DEVELOPERS = { "jack", "zach", "detris" };
 	
 	public static final String[] MODERATORS = {};
 	
