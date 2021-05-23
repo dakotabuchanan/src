@@ -798,15 +798,25 @@ public final class Skills implements Serializable {
 		if (getXp(skill) >= 200000000) {
 			exp *= 1;
 		} else {
-			if ((skill >= 0 && skill <= 4) || skill == 6) {
+			if ((skill >= 0 && skill <= 4) || skill == 6) { //mage 4 range 6
 				if (player.getTemporaryTarget() != null && player.isAtWild()
 						&& !(player.getTemporaryTarget() instanceof NPC))
 					exp *= 1;
-				else if (player.getTemporaryTarget() != null && player.isAtWild()
+				else if (player.getTemporaryTarget() != null && player.isAtWild() && (skill != 4 && skill != 6)
 						&& (player.getTemporaryTarget() instanceof NPC))
 					exp *= Settings.COMBAT_XP_RATE;
-				else
-					exp *= Settings.COMBAT_XP_RATE;
+				else if (player.getTemporaryTarget() != null && player.isAtWild() && (skill == 4)
+						&& (player.getTemporaryTarget() instanceof NPC))
+					exp *= Settings.MAGIC_XP_RATE;
+				else if (player.getTemporaryTarget() != null && player.isAtWild() && (skill == 6)
+						&& (player.getTemporaryTarget() instanceof NPC))
+					exp *= Settings.RANGE_XP_RATE;
+				else if (skill == 4) {
+					exp *= Settings.MAGIC_XP_RATE;
+				} else if (skill == 6) {
+					exp *= Settings.RANGE_XP_RATE;
+				}
+				else exp *= Settings.COMBAT_XP_RATE;
 			} else if (skill == 23) {
 				exp *= Settings.SUMMONING_XP_RATE;
 			} else if (skill == 24) {
