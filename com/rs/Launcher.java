@@ -68,10 +68,10 @@ public final class Launcher {
 			return;
 		}*/
 		//Settings.OWNER_IP = String.valueOf(args[4]);
-		Settings.VPS_HOSTED = Boolean.parseBoolean(args[3]);
-		Settings.PORT_ID = Integer.valueOf(args[2]);
-		Settings.HOSTED = Boolean.parseBoolean(args[1]);
-		Settings.DEBUG = Boolean.parseBoolean(args[0]);
+		Settings.VPS_HOSTED = true;
+		Settings.PORT_ID = 43594;
+		Settings.HOSTED = false;
+		Settings.DEBUG = false;
 		long Time = Utils.currentTimeMillis();
 		//Logger.log("Launcher", "Initiating Cache...");
 		Cache.init();
@@ -116,7 +116,7 @@ public final class Launcher {
 		WorldList.init();
 		KillScoreBoard.init();
 		EdgevillePvPInstance.buildInstance();
-		CityEventHandler.registerCitys();
+		//CityEventHandler.registerCitys();
 		CustomStoreData.init();
 		if (Settings.FORUM_INTEGRATION) {
 			//Logger.log("Launcher", "Initiating Web Integration...");
