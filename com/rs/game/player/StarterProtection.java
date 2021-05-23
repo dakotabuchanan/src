@@ -76,13 +76,13 @@ public class StarterProtection {
 
 	public static final void sendStarterPack(final Player player) {
 		addStarter(player);
-		for (int skills = 0; skills < 7; skills++) {
+		/*for (int skills = 0; skills < 7; skills++) {
 			Limits i = Limits.forId(skills);
 			if (i != null) {
 				player.getSkills().set(skills, i.getLevel());
 				player.getSkills().setXp(skills, Skills.getXPForLevel(i.getLevel()));
 			}
-		}
+		}*/
 		player.reset();
 		player.getInterfaceManager().sendInterface(275);
 		player.getPackets().sendIComponentText(275, 1, "*Commands*");
