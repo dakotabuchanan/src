@@ -148,14 +148,14 @@ public final class ItemDefinitions {
 		for (ItemDefinitions definition : itemsDefinitions) {
 			name = name.toLowerCase();
 			String output = definition.name.toLowerCase();
-			if (name.contains("¤")
+			if (name.contains("ï¿½")
 					&& output.equalsIgnoreCase(name.replace("#noted", "").substring(0, name.length() - 2))
 					|| output.equalsIgnoreCase(name.replace("#noted", ""))) {
 				if (name.contains("#noted"))
 					return definition.getCertId();
 				if (output.equalsIgnoreCase("coins"))
 					return 995;
-				if (name.contains("¤")) {
+				if (name.contains("ï¿½")) {
 					amount = Integer.valueOf(name.substring(name.length() - 1, name.length()));
 					return definition.getId() + amount;
 				}
@@ -343,6 +343,8 @@ public final class ItemDefinitions {
 	public int getRenderAnimId() {
 		if (id == 18355 || id == 18351 || id == 18357)
 			return 1426;
+		if (id == 21777 || id == 24201)
+			return 28;
 		if (clientScriptData == null)
 			return 1426;
 		Object animId = clientScriptData.get(644);
