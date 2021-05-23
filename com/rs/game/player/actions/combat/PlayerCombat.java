@@ -234,7 +234,7 @@ public class PlayerCombat extends Action {
 					|| weaponId == 4934 || weaponId == 4935 || weaponId == 4936 || weaponId == 4937
 					|| weaponId == 10156)
 				delay = 3;
-			else if (weaponName.contains("crystal") || weaponName.contains("crossbow") || weaponName.contains("thrown"))
+			else if (weaponName.contains("crossbow") || weaponName.contains("thrown"))
 				delay = 5;
 			else if (weaponName.contains("chinchompa") || weaponId == 6522)
 				delay = 3;
@@ -246,6 +246,23 @@ public class PlayerCombat extends Action {
 				delay = 2;
 			} else {
 				switch (weaponId) {
+				case 4212:
+				case 4213:
+				case 4214:
+				case 4215:
+				case 4216:
+				case 4217:
+				case 4218:
+				case 4219:
+				case 4220:
+				case 4221: 
+				case 4222:
+				case 4223:
+				case 20171:
+				case 20173:
+					delay = 3;
+				break;
+					
 				case 15241:
 					delay = 8;
 					break;
@@ -3979,6 +3996,16 @@ public class PlayerCombat extends Action {
 						return 440;
 					default:
 						return 428;
+					}
+				}
+				if (weaponName.contains("blisterwood polearm")) {
+					switch (attackStyle) {
+					case 1:
+					case 2:
+					case 3:
+						return 12005;
+					default:
+						return 12005;
 					}
 				}
 				if (weaponName.contains("zamorakian spear")) {
