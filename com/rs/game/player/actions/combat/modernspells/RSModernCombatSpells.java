@@ -73,7 +73,7 @@ public class RSModernCombatSpells {
 
 		FIRE_SURGE(91, 50.5, 280, 2791, new Graphics(2728), new int[] { 2735, 2736 }, 2741, FIRE_SPELL),
 
-		STORM_OF_ARMADYL(99, 70, 0, 10546, new Graphics(457), 1019, 1019),
+		STORM_OF_ARMADYL(99, 70, 0, 14221, new Graphics(457), 1019, 1019),
 
 		CONFUSE(26, 13.0, 1, 710, new Graphics(102, 0, 100), 103, 104),
 
